@@ -1,64 +1,274 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE>
+<html ng-app="app">
 <head>
-  <% include ../partials/header.ejs %>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="controller.js" type="text/javascript" charset="utf-8" async defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </head>
 
-<body>
+<body ng-controller="test1 as ctrl">
+    <div class="container">
 
-  <% include ../partials/nav.ejs %>
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/lang-logo.png">
-    </a>
-    <h1>Getting Started with Node on Heroku</h1>
-    <p>This is a sample Node application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started with Node</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-  </div>
+        <div class="jumbotron">
+            <h1>Hello {{ctrl.name}}</h1>
+            <button ng-click="ctrl.click()">Click</button>
+
+        </div>
+        <div class="jumbotron">
+         <div ng-repeat="note in ctrl.notes1" ng-class="ctrl.getNodeClass(note.done)">
+            {{note.$$hashKey}}
+            <span ng-bind="note.id"></span>
+            <span ng-bind="note.label"></span>
+        </div>
+
+
+        <div ng-repeat="note in ctrl.notes2 track by note.id" >
+            {{note.$$hashKey}}
+            <span ng-bind="note.id"></span>
+            <span ng-bind="note.label"></span>
+        </div>
+        <button ng-click="ctrl.changeNode()">change node  Click</button>
+    </div>
+    <div class="jumbotron">
+        <table>
+            <tr ng-repeat-start="note in ctrl.testnode3">
+                <td>
+                    <h2 ng-bind="note.label"></h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Author Ryan
+                    </h5>
+                </td>
+            </tr>
+            <tr ng-repeat-end>
+                <td>
+                    {{note.done}}
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+    <div class="jumbotron">
+        <input type="text" ng-model="ctrl.username">
+        <input type="password" ng-model="ctrl.password">
+        <button ng-click="ctrl.clean3()">Clean</button>
+        <button ng-click="ctrl.submit3()">submit</button>
+
+    </div>
+
+    <div class="jumbotron">
+
+        <form ng-submit="ctrl.submit4()">
+            <input type="text" ng-model="ctrl.test4.username">
+            <input type="password" ng-model="ctrl.test4.password">
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+
+    <div class="jumbotron">
+
+        <form ng-submit="ctrl.submit41()" name="form41">
+            <input name="uname" type="text" ng-model="ctrl.test41.username" required ng-minlength="5">
+            <span ng-show="form41.uname.$error.required">Please enter this table</span>
+            <span ng-show="form41.uname.$error.minlength">Please enter more than 5 letter</span>
+            <input name="upass" type="password" ng-model="ctrl.test41.password" required ng-minlength="5">
+            <span ng-show="form41.upass.$error.required">Please enter this table</span>
+            <input type="submit" value="Submit" ng-disabled="form41.$invalid">
+        </form>
+
+    </div>
+
+    <div class="jumbotron">
+        4-2
+        <form ng-submit="ctrl.submit42()" name="form42">
+            <input name="uname" type="text" ng-model="ctrl.test42.username" required ng-minlength="5" class="username">
+            <span ng-show="form42.uname.$error.required">Please enter this table</span>
+            <span ng-show="form42.uname.$error.minlength">Please enter more than 5 letter</span>
+            <input name="upass" type="password" ng-model="ctrl.test42.password" required ng-minlength="5">
+            <span ng-show="form42.upass.$error.required">Please enter this table</span>
+            <input type="submit" value="Submit" ng-disabled="form42.$invalid">
+        </form>
+
+    </div>
+
+    <div class="jumbotron">
+        4-3
+        <form ng-submit="ctrl.submit43()" name="form43">
+            <input name="uname" type="text" ng-model="ctrl.test43.username" required ng-minlength="5" class="username">
+            <span ng-show="form43.uname.$error.required">
+                Please enter this table
+            </span>
+            <span ng-show="form43.uname.$error.minlength">
+                Please enter more than 5 letter
+            </span>
+            <input name="upass" type="password" ng-model="ctrl.test43.password" required ng-minlength="5">
+            <span ng-show="form43.upass.$error.required">
+                Please enter this table
+            </span>
+
+            <ng-form name="pro43">
+            <input type="text" name="firstname"
+            placeholder="first name" required
+            ng-model="ctrl.test43.pro.firstname">
+        </ng-form>
+        <span ng-show="form43.pro43.$invalid">
+            Please fill the profile
+        </span>
+
+        <input type="submit" value="Submit" ng-disabled="form43.$invalid">
+    </form>
+
 </div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" class="alert-link">Getting Started with Node on Heroku</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/node-js-getting-started">Heroku Button</a> on the repository.</li>
+<div class="jumbotron">
+    4-4
+    <div ng-repeat="note in ctrl.sports">
+        <label ng-bind="note.label">
+        </label>
+        <input type="checkbox" ng-model="note.selected" ng-true-value="'YES'" ng-false-value="'NO'">
+        <input type="checkbox" ng-checked="note.selected==='YES'">
+        <div>
+            CURRENT select: {{note.selected}}
+        </div>
+    </div>
+</div>
+<div class="jumbotron">
+    4-5
+    <div ng-init="otherGender='other'">
+        <input type="radio" name="gender" value="man" ng-model="user.gender">Man
+        <input type="radio" name="gender" value="woman" ng-model="user.gender">Woman
+        <input type="radio" name="gender" value="otherGender" ng-model="user.gender">{{otherGender}}
+    </div>
+</div>
+<div class="jumbotron">
+    4-6
+    <div ng-init="location='tw'">
+        <select ng-model="location">
+            <option value="uk">UK</option>
+            <option value="jp">JP</option>
+            <option value="tw">TW</option>
+        </select>
 
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/master/package.json">package.json</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
     </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-      <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/node-js-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd node-js-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started with Node on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/deploying-nodejs">Deploying Node Apps on Heroku</a></li>
-      </ul>
+</div>
+<div class="jumbotron">
+    4-7
+    <div>
+        <select ng-model="ctrl.selectCountryID" ng-options="c.id as c.label for c in ctrl.countries">
+        </select>
+        select country id {{ctrl.selectCountryID}}
+
     </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-  </div>
+    <div>
+        <select ng-model="ctrl.selectCountry" ng-options="c.label for c in ctrl.countries">
+        </select>
+        select country  {{ctrl.selectCountry}}
+    </div>
+</div>
+<!-- <div class="jumbotron" ng-controller="ctrl as test5"> -->
+<div class="jumbotron">
+    5-1
+    <button ng-click="ctrl.open51('A')">Open A</button>
+    <button ng-click="ctrl.open51('B')">Open B</button>
+    <div ng-switch on="ctrl.tab">
+        <div ng-switch-when="first">
+            <div ng-controller="test5 as subctrl">
+                <!-- {{subctrl.test511}} -->
+                               <div ng-repeat="note in subctrl.list">
+                    <span>{{note.id}},{{note.label}}</span>
+                </div>
+                <button ng-click="subctrl.add()">ADD</button>
+            </div>
+        </div>
+        <div ng-switch-when="second">
+            <div ng-controller="test5 as subctrl">
+                <div ng-repeat="note in subctrl.list">
+                    <span>{{note.id}},{{note.label}}</span>
+                </div>
+                <button ng-click="subctrl.add()">ADD</button>
+
+            </div>
+        </div>
+        <div ng-switch-default>
+            default
+        </div>
+    </div>
+
+</div>
+<div class="jumbotron">
+    5-2
+    <div ng-controller="test52 as ctrl">
+        <button ng-click="ctrl.test52()">Click</button>
+    </div>
+
+
+</div>
+
+<div class="jumbotron">
+    5-3
+    <div ng-controller="test53 as ctrl">
+        <button ng-click="ctrl.open53('A')">
+            Open A
+        </button>
+        <button ng-click="ctrl.open53('B')">
+            Open B
+        </button>
+        <div ng-switch on="ctrl.tab">
+            <div ng-switch-when="first">
+                PAGE:A
+                <div ng-repeat="note in ctrl.list()">
+                    <span>
+                        {{note.label}}
+                    </span>
+                </div>
+                <ng-form name="form53">
+                    <input type="text" name="text53" ng-model="ctrl.txt53"  placeholder="Enter text" required>
+                    <button ng-click="ctrl.click53()" ng-disabled="form53.text53.$invalid">
+                        Click me
+                    </button>
+                </ng-form>
+            </div>
+            <div ng-switch-when="second">
+                PAGE:B
+                <div ng-repeat="note in ctrl.list()">
+                    <span>
+                        {{note.label}}
+                    </span>
+                </div>
+                <ng-form name="form53">
+                    <input type="text" name="text53" ng-model="ctrl.txt53"  placeholder="Enter text" required>
+                    <button ng-click="ctrl.click53()" ng-disabled="form53.text53.$invalid">
+                        Click me
+                    </button>
+                </ng-form>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
 </div>
 
 
