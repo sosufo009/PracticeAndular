@@ -187,8 +187,14 @@ angular.module('app', [])
 
 
 }])
-.controller('test6', [function(){
+.controller('test6', ['$http',function($http){
     var self=this;
+    self.nodes=[];
+    $http.get('/api/nodes').then(function(response){
+        self.items=response.data;
+    },function(errResponse){
+        console.log(errResponse);
+    });
 
 
 }])
