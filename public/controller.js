@@ -209,7 +209,8 @@ angular.module('app', [])
         $http.post('/api/nodes/'+self.txt61,[],null)
         .then(function(response){
             console.log(response);
-            click();
+            self.click();
+            self.txt61="";
         }
         ,function(errResponse)
         {
