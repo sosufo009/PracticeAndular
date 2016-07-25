@@ -206,7 +206,7 @@ angular.module('app', [])
 
     self.insert=function()
     {
-        console.log('here');
+        console.log('/api/nodes/'+self.txt61);
         $http.post('/api/nodes/'+self.txt61,[],null)
         .then(function(response){
             console.log(response);
