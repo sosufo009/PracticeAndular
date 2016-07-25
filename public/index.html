@@ -288,7 +288,9 @@
     <div class="jumbotron">
         6-1
         <div ng-controller="test6 as ctrl">
-            {{ctrl.nodes}}
+            <div ng-repeat="node in ctrl.items">
+                {{ctrl.nodes}}
+            </div>
         </div>
     </div>
 
