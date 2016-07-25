@@ -194,7 +194,8 @@ angular.module('app', [])
     self.click=function()
     {
         self.items=[];
-        $http.get('/api/nodes').then(function(response)
+        $http.get('/api/nodes')
+        .then(function(response)
         {
             self.items=response.data.rows;
         },function(errResponse)
@@ -203,6 +204,18 @@ angular.module('app', [])
         });
     };
 
+    self.insert=function()
+    {
+        $http.post('/api/nodes/'+self.txt61,[],null)
+        .then(function(response){
+            console.log(response);
+        }
+        ,function(errResponse)
+        {
+            console.log(errResponse);
+        });
+
+    }
 
 
 }])

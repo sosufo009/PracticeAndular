@@ -291,7 +291,13 @@
                 {{node.label}}
             </div>
             <div>
-                <button ng-click="ctrl.click()">click me</button>
+                <button ng-click="ctrl.click()">Refreash me</button>
+            </div>
+            <div>
+                <ng-form name="form51" ng-submit="ctrl.insert()">
+                    <input type="text" ng-model="txt61" placeholder="Insert name" required>
+                    <input type="submit" value="Insert Name" disabled="form51.$invalid">
+                </ng-form>
             </div>
         </div>
     </div>

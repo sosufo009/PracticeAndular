@@ -16,25 +16,39 @@ app.get('/', function(request, response) {
 });
 
 
-app.get('/api/nodes', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM nodes', function(err, result) {
-        done();
-        // console.log(result);
-        response.send(result);
-        // if (err)
-        // {
-        //     console.error(err);
-        //     response.send("Error " + err);
-        // }
-        // else
-        // {
-        //     response.render('pages/db', {results: result.rows} );
-        // }
+app.get('/api/nodes', function (request, response)
+{
+    pg.connect(process.env.DATABASE_URL, function(err, client, done)
+    {
+        client.query('SELECT * FROM nodes', function(err, result)
+        {
+            done();
+            // console.log(result);
+            response.send(result);
+            // if (err)
+            // {
+            //     console.error(err);
+            //     response.send("Error " + err);
+            // }
+            // else
+            // {
+            //     response.render('pages/db', {results: result.rows} );
+            // }
+        });
     });
 });
-})
 
+app.post('/api/nodes/:name', function (request, response)
+{
+    pg.connect(process.env.DATABASE_URL, function(err, client, done)
+    {
+        client.query('insert into nodes(label,del) values('+request.name+',ture);', function(err, result)
+        {
+            done();
+            response.send(result);
+        });
+    });
+})
 
 
 app.listen(app.get('port'), function() {
