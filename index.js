@@ -42,7 +42,6 @@ app.post('/api/nodes/:name', function (request, response)
 {
     pg.connect(process.env.DATABASE_URL, function(err, client, done)
     {
-        console.log('insert into nodes(label,del) values(\''+request.params.name+'\',ture);');
 
         client.query('insert into nodes(label,del) values(\''+request.params.name+'\',ture);', function(err, result)
         {
