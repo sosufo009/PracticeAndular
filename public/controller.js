@@ -194,7 +194,7 @@ angular.module('app', [])
     self.click=function()
     {
         self.items=[];
-        $http.get('/api/nodes',{cache:true})
+        $http.get('/api/nodes')
         .then(function(response)
         {
             self.items=response.data.rows;
@@ -206,7 +206,7 @@ angular.module('app', [])
 
     self.insert=function()
     {
-        $http.post('/api/nodes/'+self.txt61,[],{cache:true})
+        $http.post('/api/nodes/'+self.txt61,[],null)
         .then(function(response){
             console.log(response);
             self.click();
