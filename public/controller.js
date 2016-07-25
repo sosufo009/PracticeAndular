@@ -191,8 +191,8 @@ angular.module('app', [])
     var self=this;
     self.nodes=[];
     $http.get('/api/nodes').then(function(response){
-        self.items=response.rows;
-        console.log(response.rows);
+        self.items=response.rows.toJSON();
+        console.log(response.rows.toJSON());
     },function(errResponse){
         console.log(errResponse);
     });
