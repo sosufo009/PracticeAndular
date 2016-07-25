@@ -193,6 +193,7 @@ angular.module('app', [])
 
     self.click=function()
     {
+        self.nodes={};
         $http.get('/api/nodes').then(function(response)
         {
             self.items=response.data.rows;
