@@ -187,6 +187,11 @@ angular.module('app', [])
 
 
 }])
+.controller('test6', [function(){
+    var self=this;
+
+
+}])
 
 .factory('testFac', [function(){
     var items=
