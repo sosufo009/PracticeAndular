@@ -194,7 +194,7 @@ angular.module('app', [])
     self.click=function()
     {
         self.items=[];
-        $http.get('/api/nodes')
+        $http.get('/api/nodes',{cache:true})
         .then(function(response)
         {
             self.items=response.data.rows;
