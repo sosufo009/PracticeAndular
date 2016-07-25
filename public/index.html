@@ -31,7 +31,6 @@
         /* Large devices (large desktops, 1200px and up) */
         @media (min-width: 1200px) {  }
 
-        </body>
     </style>
 </head>
 
@@ -290,6 +289,9 @@
         <div ng-controller="test6 as ctrl">
             <div ng-repeat="node in ctrl.items">
                 {{node.label}}
+            </div>
+            <div>
+                <button ng-click="ctrl.click()">click me</button>
             </div>
         </div>
     </div>

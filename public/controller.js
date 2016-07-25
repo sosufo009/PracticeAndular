@@ -156,7 +156,7 @@ angular.module('app', [])
 .controller('test52', ['$log',function($log){
     var self=this;
 
-        self.test52=function(){
+    self.test52=function(){
         $log.log('Button click');
     }
 
@@ -190,12 +190,21 @@ angular.module('app', [])
 .controller('test6', ['$http',function($http){
     var self=this;
     self.nodes={};
-    $http.get('/api/nodes').then(function(response){
-        self.items=response.rows;
-        // console.log(response.rows);
-    },function(errResponse){
-        console.log(errResponse);
-    });
+
+    self.click=function()
+    {
+        $http.get('/api/nodes').then(function(response)
+        {
+            self.items=response.rows;
+            console.log(response.rows);
+            console.log(response);
+            console.log(self.items);
+        },function(errResponse)
+        {
+            console.log(errResponse);
+        });
+    };
+
 
 
 }])
@@ -203,8 +212,8 @@ angular.module('app', [])
 .factory('testFac', [function(){
     var items=
     [
-        {id:1,label:"aaa"},
-        {id:2,label:"bbb"}
+    {id:1,label:"aaa"},
+    {id:2,label:"bbb"}
     ];
     return {
         list:function(){
