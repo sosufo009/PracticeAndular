@@ -189,10 +189,10 @@ angular.module('app', [])
 }])
 .controller('test6', ['$http',function($http){
     var self=this;
-    self.nodes=[];
+    self.nodes={};
     $http.get('/api/nodes').then(function(response){
         self.items=response.rows;
-        console.log(response.rows);
+        // console.log(response.rows);
     },function(errResponse){
         console.log(errResponse);
     });
