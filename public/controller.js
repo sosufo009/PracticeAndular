@@ -195,7 +195,7 @@ angular.module('app', [])
     {
         $http.get('/api/nodes').then(function(response)
         {
-            self.items=response.rows;
+            self.items=response.data.rows;
             console.log(response.rows);
             console.log(response);
             console.log(self.items);
