@@ -192,6 +192,7 @@ angular.module('app', [])
     self.nodes=[];
     $http.get('/api/nodes').then(function(response){
         self.items=response.data;
+        console.log(response.data);
     },function(errResponse){
         console.log(errResponse);
     });

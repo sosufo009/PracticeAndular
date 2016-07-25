@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var pg = require('pg');
 
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -19,7 +20,7 @@ app.get('/api/nodes', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM nodes', function(err, result) {
         done();
-        console.log(result);
+        // console.log(result);
         response.send(result);
         // if (err)
         // {
