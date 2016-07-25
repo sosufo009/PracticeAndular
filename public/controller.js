@@ -206,7 +206,7 @@ angular.module('app', [])
 
     self.insert=function()
     {
-        $http.post('/api/nodes/'+self.txt61,[],null)
+        $http.post('/api/nodes/'+self.txt61,[],{cache:true})
         .then(function(response){
             console.log(response);
             self.click();
