@@ -12,7 +12,9 @@
   "dependencies": {
     "ejs": "*",
     "express": "*",
-    "pg": "*"
+    "pg": "*",
+    "ws":"*",
+    "socket.io": "*"
   },
   "repository": {
     "type": "git",

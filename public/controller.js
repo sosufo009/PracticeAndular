@@ -221,7 +221,16 @@ angular.module('app', [])
 
 
 }])
+// .controller('web', function ($websocket) {
+//   var ws = $websocket.$new('ws://localhost:4000');
 
+//   ws.$on('$open', function () {
+//     ws.$emit('hello', 'world'); // it sends the event 'hello' with data 'world'
+//   })
+//   .$on('incoming event', function (message) { // it listents for 'incoming event'
+//     console.log('something incoming from the server: ' + message);
+//   });
+// })
 .factory('testFac', [function(){
     var items=
     [

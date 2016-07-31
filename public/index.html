@@ -12,26 +12,28 @@
 　　<![endif]-->
 
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
-    </script>
-    <style type="text/css">
-        /* Small devices (tablets, 768px and up) */
-        @media (min-width: 768px) {  }
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+</script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 
-        /* Medium devices (desktops, 992px and up) */
-        @media (min-width: 992px) {  }
+<style type="text/css">
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {  }
 
-        /* Large devices (large desktops, 1200px and up) */
-        @media (min-width: 1200px) {  }
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {  }
 
-    </style>
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
+
+</style>
 </head>
 
 <body ng-controller="test1 as ctrl">
@@ -46,7 +48,7 @@
 
         </div>
         <div class="jumbotron">
-         <div ng-repeat="note in ctrl.notes1" ng-class="ctrl.getNodeClass(note.done)">
+           <div ng-repeat="note in ctrl.notes1" ng-class="ctrl.getNodeClass(note.done)">
             {{note.$$hashKey}}
             <span ng-bind="note.id"></span>
             <span ng-bind="note.label"></span>
@@ -145,167 +147,178 @@
             </span>
 
             <ng-form name="pro43">
-                <input type="text" name="firstname" placeholder="first name" required
-                ng-model="ctrl.test43.pro.firstname">
-            </ng-form>
-            <span ng-show="form43.pro43.$invalid">
-                Please fill the profile
-            </span>
+            <input type="text" name="firstname" placeholder="first name" required
+            ng-model="ctrl.test43.pro.firstname">
+        </ng-form>
+        <span ng-show="form43.pro43.$invalid">
+            Please fill the profile
+        </span>
 
-            <input type="submit" value="Submit" ng-disabled="form43.$invalid">
-        </form>
+        <input type="submit" value="Submit" ng-disabled="form43.$invalid">
+    </form>
+
+</div>
+<div class="jumbotron">
+    4-4
+    <div ng-repeat="note in ctrl.sports">
+        <label ng-bind="note.label">
+        </label>
+        <input type="checkbox" ng-model="note.selected" ng-true-value="'YES'" ng-false-value="'NO'">
+        <input type="checkbox" ng-checked="note.selected==='YES'">
+        <div>
+            CURRENT select: {{note.selected}}
+        </div>
+    </div>
+</div>
+<div class="jumbotron">
+    4-5
+    <div ng-init="otherGender='other'">
+        <input type="radio" name="gender" value="man" ng-model="user.gender">Man
+        <input type="radio" name="gender" value="woman" ng-model="user.gender">Woman
+        <input type="radio" name="gender" value="otherGender" ng-model="user.gender">{{otherGender}}
+    </div>
+</div>
+<div class="jumbotron">
+    4-6
+    <div ng-init="location='tw'">
+        <select ng-model="location">
+            <option value="uk">UK</option>
+            <option value="jp">JP</option>
+            <option value="tw">TW</option>
+        </select>
 
     </div>
-    <div class="jumbotron">
-        4-4
-        <div ng-repeat="note in ctrl.sports">
-            <label ng-bind="note.label">
-            </label>
-            <input type="checkbox" ng-model="note.selected" ng-true-value="'YES'" ng-false-value="'NO'">
-            <input type="checkbox" ng-checked="note.selected==='YES'">
-            <div>
-                CURRENT select: {{note.selected}}
+</div>
+<div class="jumbotron">
+    4-7
+    <div>
+        <select ng-model="ctrl.selectCountryID" ng-options="c.id as c.label for c in ctrl.countries">
+        </select>
+        select country id {{ctrl.selectCountryID}}
+
+    </div>
+    <div>
+        <select ng-model="ctrl.selectCountry" ng-options="c.label for c in ctrl.countries">
+        </select>
+        select country  {{ctrl.selectCountry}}
+    </div>
+</div>
+
+<div class="jumbotron">
+    5-1
+    <button ng-click="ctrl.open51('A')">Open A</button>
+    <button ng-click="ctrl.open51('B')">Open B</button>
+    <div ng-switch on="ctrl.tab">
+        <div ng-switch-when="first">
+            <div ng-controller="test5 as subctrl">
+                <!-- {{subctrl.test511}} -->
+                <div ng-repeat="note in subctrl.list">
+                    <span>{{note.id}},{{note.label}}</span>
+                </div>
+                <button ng-click="subctrl.add()">ADD</button>
             </div>
         </div>
-    </div>
-    <div class="jumbotron">
-        4-5
-        <div ng-init="otherGender='other'">
-            <input type="radio" name="gender" value="man" ng-model="user.gender">Man
-            <input type="radio" name="gender" value="woman" ng-model="user.gender">Woman
-            <input type="radio" name="gender" value="otherGender" ng-model="user.gender">{{otherGender}}
-        </div>
-    </div>
-    <div class="jumbotron">
-        4-6
-        <div ng-init="location='tw'">
-            <select ng-model="location">
-                <option value="uk">UK</option>
-                <option value="jp">JP</option>
-                <option value="tw">TW</option>
-            </select>
+        <div ng-switch-when="second">
+            <div ng-controller="test5 as subctrl">
+                <div ng-repeat="note in subctrl.list">
+                    <span>{{note.id}},{{note.label}}</span>
+                </div>
+                <button ng-click="subctrl.add()">ADD</button>
 
+            </div>
         </div>
-    </div>
-    <div class="jumbotron">
-        4-7
-        <div>
-            <select ng-model="ctrl.selectCountryID" ng-options="c.id as c.label for c in ctrl.countries">
-            </select>
-            select country id {{ctrl.selectCountryID}}
-
-        </div>
-        <div>
-            <select ng-model="ctrl.selectCountry" ng-options="c.label for c in ctrl.countries">
-            </select>
-            select country  {{ctrl.selectCountry}}
+        <div ng-switch-default>
+            default
         </div>
     </div>
 
-    <div class="jumbotron">
-        5-1
-        <button ng-click="ctrl.open51('A')">Open A</button>
-        <button ng-click="ctrl.open51('B')">Open B</button>
+</div>
+<div class="jumbotron">
+    5-2
+    <div ng-controller="test52 as ctrl">
+        <button ng-click="ctrl.test52()">Click</button>
+    </div>
+</div>
+
+<div class="jumbotron">
+    5-3
+    <div ng-controller="test53 as ctrl">
+        <button ng-click="ctrl.open53('A')">
+            Open A
+        </button>
+        <button ng-click="ctrl.open53('B')">
+            Open B
+        </button>
         <div ng-switch on="ctrl.tab">
             <div ng-switch-when="first">
-                <div ng-controller="test5 as subctrl">
-                    <!-- {{subctrl.test511}} -->
-                                   <div ng-repeat="note in subctrl.list">
-                        <span>{{note.id}},{{note.label}}</span>
-                    </div>
-                    <button ng-click="subctrl.add()">ADD</button>
+                PAGE:A
+                <div ng-repeat="note in ctrl.list()">
+                    <span>
+                        {{note.label}}
+                    </span>
                 </div>
-            </div>
-            <div ng-switch-when="second">
-                <div ng-controller="test5 as subctrl">
-                    <div ng-repeat="note in subctrl.list">
-                        <span>{{note.id}},{{note.label}}</span>
-                    </div>
-                    <button ng-click="subctrl.add()">ADD</button>
-
-                </div>
-            </div>
-            <div ng-switch-default>
-                default
-            </div>
+                <ng-form name="form53">
+                <input type="text" name="text53" ng-model="ctrl.txt53"  placeholder="Enter text" required>
+                <button ng-click="ctrl.click53()" ng-disabled="form53.text53.$invalid">
+                    Click me
+                </button>
+            </ng-form>
         </div>
-
-    </div>
-    <div class="jumbotron">
-        5-2
-        <div ng-controller="test52 as ctrl">
-            <button ng-click="ctrl.test52()">Click</button>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        5-3
-        <div ng-controller="test53 as ctrl">
-            <button ng-click="ctrl.open53('A')">
-                Open A
+        <div ng-switch-when="second">
+            PAGE:B
+            <div ng-repeat="note in ctrl.list()">
+                <span>
+                    {{note.label}}
+                </span>
+            </div>
+            <ng-form name="form53">
+            <input type="text" name="text53" ng-model="ctrl.txt53"  placeholder="Enter text" required>
+            <button ng-click="ctrl.click53()" ng-disabled="form53.text53.$invalid">
+                Click me
             </button>
-            <button ng-click="ctrl.open53('B')">
-                Open B
-            </button>
-            <div ng-switch on="ctrl.tab">
-                <div ng-switch-when="first">
-                    PAGE:A
-                    <div ng-repeat="note in ctrl.list()">
-                        <span>
-                            {{note.label}}
-                        </span>
-                    </div>
-                    <ng-form name="form53">
-                        <input type="text" name="text53" ng-model="ctrl.txt53"  placeholder="Enter text" required>
-                        <button ng-click="ctrl.click53()" ng-disabled="form53.text53.$invalid">
-                            Click me
-                        </button>
-                    </ng-form>
-                </div>
-                <div ng-switch-when="second">
-                    PAGE:B
-                    <div ng-repeat="note in ctrl.list()">
-                        <span>
-                            {{note.label}}
-                        </span>
-                    </div>
-                    <ng-form name="form53">
-                        <input type="text" name="text53" ng-model="ctrl.txt53"  placeholder="Enter text" required>
-                        <button ng-click="ctrl.click53()" ng-disabled="form53.text53.$invalid">
-                            Click me
-                        </button>
-                    </ng-form>
-                </div>
-            </div>
-
-
-
-        </div>
-
-
+        </ng-form>
     </div>
-    <div class="jumbotron">
-        6-1
-        <div ng-controller="test6 as ctrl">
-            <div ng-repeat="node in ctrl.items">
-                {{node.label}}
-            </div>
-            <div>
-                <button ng-click="ctrl.click()">Refreash me</button>
-            </div>
-            <div>
-                <form name="form51" ng-submit="ctrl.insert()">
-                    <input type="text" ng-model="ctrl.txt61" placeholder="Insert name" required>
-                    <input type="submit" value="Insert Name" ng-disabled="form51.$invalid">
-                </form>
-            </div>
-        </div>
-    </div>
+</div>
 
 
 
 </div>
 
+
+</div>
+<div class="jumbotron">
+    6-1
+    <div ng-controller="test6 as ctrl">
+        <div ng-repeat="node in ctrl.items">
+            {{node.label}}
+        </div>
+        <div>
+            <button ng-click="ctrl.click()">Refreash me</button>
+        </div>
+        <div>
+            <form name="form51" ng-submit="ctrl.insert()">
+                <input type="text" ng-model="ctrl.txt61" placeholder="Insert name" required>
+                <input type="submit" value="Insert Name" ng-disabled="form51.$invalid">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="jumbotron">
+
+
+</div>
+
+
+
+
+</div>
+
+<script type="text/javascript">
+var socket=io.connect('/');
+socket.on('connect',function(){
+    alert('Connect already');
+});
+</script>
 
 </body>
 </html>
