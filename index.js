@@ -60,9 +60,9 @@ app.listen(app.get('port'), function() {
 });
 
 
-var io=require('socket.io').listen(app.listen(process.env.PORT || 5000));
+// var io=require('socket.io').listen(app.listen(process.env.PORT || 5000));
 
-io.sockets.on('connection',function(socket){
-    socket.emit('connected');
-});
+// io.sockets.on('connection',function(socket){
+//     socket.emit('connected');
+// });
 
